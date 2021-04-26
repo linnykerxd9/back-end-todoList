@@ -1,6 +1,7 @@
 module.exports = function (app) {
+    const statusController = require('../controllers/statusController.js');
+
     app.route('/status')
-        .get((req, res) => {
-        res.send("Bem vindo a Rota de Status")
-    })
+    .get(statusController.listAll)
+    .post(statusController.createOne)
 }

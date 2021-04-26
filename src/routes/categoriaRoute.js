@@ -1,6 +1,7 @@
 module.exports = function (app) {
+    const categoriaController = require('../controllers/categoriaController.js');
+    
     app.route('/categoria')
-        .get((req, res) => {
-        res.send("Bem vindo a Rota de categoria")
-    })
+    .get(categoriaController.listAll)
+    .post(categoriaController.createOne)
 }

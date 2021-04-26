@@ -1,6 +1,7 @@
 module.exports = function (app) {
+    const atividadeController = require('../controllers/atividadeController.js');
+
     app.route('/atividade')
-        .get((req, res) => {
-        res.send("Bem vindo a Rota de Atividade")
-    })
+    .get(atividadeController.listAll)
+    .post(atividadeController.createOne)
 }

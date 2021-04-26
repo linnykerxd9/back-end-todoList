@@ -1,6 +1,7 @@
 module.exports = function (app) {
+    const listaController = require('../controllers/listaController.js');
+
     app.route('/lista')
-    .get((req,res) => {
-        res.send("Bem vindo a Rota de Lista")
-    })
+    .get(listaController.listAll)
+    .post(listaController.createOne)
 }
