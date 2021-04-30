@@ -1,3 +1,9 @@
+const Atividade = require('../models').Atividade
+const Status = require('../models').Status
+const Lista = require('../models').Lista
+const AtividadeUsuario = require('../models').AtividadeUsuario
+const Usuario = require('../models').Usuario
+
 exports.listAll = (req, res) => {
     const atividades = [
         {
@@ -22,9 +28,8 @@ exports.listAll = (req, res) => {
     res.send(atividades)
 }
 exports.createOne = (req, res) => {
-    const response = {
-        message: 'Atividade Criada com sucesso',
-        data: req.body
-    }
-    res.send(response)
+    const { descricao, dataPrevista, dataExecucao, idLista, idStatus } = req.body
+    Atividade.create({ descricao, dataPrevista, dataExecucao, idLista, idStatus })
+        .then(atividade => res.send(atividade))
+        .catch(err => res.send(err))
 }

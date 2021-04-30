@@ -12,14 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Lista.belongsTo(models.Categoria, {
-        targetKey: 'id',
-        as: 'IdCategoria'
-      }),
-        Lista.belongsTo(models.Usuario, {
-          targetKey: 'id',
-          as: 'idLista'
-        }),
-        Lista.hasMany(models.Atividade)
+        foreignKey:"idCategoria",
+        targetKey:"id"
+      })
+      Lista.belongsTo(models.Usuario, {
+        foreignKey:"idUsuario",
+        targetKey:"id"
+      })
+      Lista.hasMany(models.Atividade, {
+        foreignKey:"idLista",
+        sourceKey:"id"
+      })
     }
   };
   Lista.init({

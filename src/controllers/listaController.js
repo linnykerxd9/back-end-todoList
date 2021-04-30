@@ -1,3 +1,9 @@
+const Lista = require("../models").Lista
+const Categoria = require('../models').Categoria
+const Usuario = require('../models').Usuario
+const Atividade = require('../models').Atividade
+const Status = require('../models').Status
+
 exports.listAll = (req, res) => {
     const lista = [
         {
@@ -14,9 +20,16 @@ exports.listAll = (req, res) => {
     res.send(lista)
 }
 exports.createOne = (req, res) => {
-    let response = {
-        message: 'lista criado com sucesso',
-        data: req.body,
-    }
-      res.send(response)
+    const { titulo, descricao, idUsuario, idCategoria } = req.body
+    console.log(req.body);
+    console.log("tentei1");
+    Lista.create({ titulo, descricao, idUsuario, idCategoria })
+        .then(lista => {
+            console.log(lista);
+            res.send(lista)
+        })
+        .catch(err => {
+            console.log(err)
+            res.send(err)
+        })
 }

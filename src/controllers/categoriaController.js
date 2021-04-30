@@ -1,3 +1,4 @@
+const Categoria = require("../models").Categoria
 exports.listAll = (req,res) => {
     const categorias = [
         {
@@ -16,9 +17,8 @@ exports.listAll = (req,res) => {
     res.send(categorias)
 }
 exports.createOne = (req, res) => {
-    const response = {
-        message: 'Categoria Criada com Sucesso',
-        data: req.body
-    }
-    res.send(response)
+    const { descricao } = req.body
+    Categoria.create({ descricao })
+        .then(categoria => res.send(categoria))
+        .catch(error => res.send(error))
 }
