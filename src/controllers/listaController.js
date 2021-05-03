@@ -5,31 +5,24 @@ const Atividade = require('../models').Atividade
 const Status = require('../models').Status
 
 exports.listAll = (req, res) => {
-    const lista = [
-        {
-            "id_lista": 1,
-            "titulo": 'minha lista',
-            "descricao": 'teste de lista 1'
-        },
-        {
-            "id_lista": 2,
-            "titulo": 'minha segunda lista',
-            "descricao": 'teste de lista 2'
-        }
+    Lista.findAll()
+        .then(lista => res.send(lista))
+        .catch(err => res.send(err))
+        //dados mockados simulando o banco de dados
+    /*const lista = [
+        {"id_lista": 1,"titulo": 'minha lista',"descricao": 'teste de lista 1'},
+        {"id_lista": 2,"titulo": 'minha segunda lista',"descricao": 'teste de lista 2'}
     ]
-    res.send(lista)
+    res.send(lista)*/
 }
+exports.listOne = (req, res) => {
+    Lista.findAll({where:{id:req.params.id}})
+       .then(Lista => res.send(Lista))
+       .catch(err => res.send(err))
+ }
 exports.createOne = (req, res) => {
     const { titulo, descricao, idUsuario, idCategoria } = req.body
-    console.log(req.body);
-    console.log("tentei1");
     Lista.create({ titulo, descricao, idUsuario, idCategoria })
-        .then(lista => {
-            console.log(lista);
-            res.send(lista)
-        })
-        .catch(err => {
-            console.log(err)
-            res.send(err)
-        })
+        .then(lista => res.send(lista))
+        .catch(err => res.send(err))
 }

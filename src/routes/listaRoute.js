@@ -4,4 +4,6 @@ module.exports = function (app) {
     app.route('/lista')
     .get(listaController.listAll)
     .post(listaController.createOne)
+    app.route('/lista/:id')
+    .get(listaController.listOne)
 }

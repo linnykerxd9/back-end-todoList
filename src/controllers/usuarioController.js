@@ -1,14 +1,24 @@
 const Usuario = require("../models").Usuario
 
 exports.listAll = (req, res) => {
-   let usuario= Usuario.get({id,nome, telefone, email })
+       Usuario.findAll()
       .then(usuario => res.send(usuario))
       .catch(error => res.send(error))
-   res.send(usuario);
+}
+exports.listOne = (req, res) => {
+   Usuario.findAll({where:{id:req.params.id}})
+      .then(usuario => res.send(usuario))
+      .catch(err => res.send(err))
 }
 exports.createOne = (req, res) => {
    const { nome, telefone, email } = req.body
    Usuario.create({ nome, telefone, email })
       .then(usuario => res.send(usuario))
       .catch(error => res.send(error))
+  }
+
+exports.deleteOne = (req, res) => {
+   Usuario.destroy({where:{id:req.params.id}})
+      .then(message => res.send(message="Usuario Apagado com sucesso"))
+      .catch(err => res.send(err))
   }
