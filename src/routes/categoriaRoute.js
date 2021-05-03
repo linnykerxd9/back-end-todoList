@@ -7,4 +7,5 @@ module.exports = function (app) {
 
     app.route('/categoria/:id')
     .get(categoriaController.listOne)
+    .delete(categoriaController.deleteOne)
 }

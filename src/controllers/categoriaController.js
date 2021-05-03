@@ -22,3 +22,10 @@ exports.createOne = (req, res) => {
         .then(categoria => res.send(categoria))
         .catch(error => res.send(error))
 }
+exports.deleteOne = (req, res) => {
+    Categoria.destroy({where:{id:req.params.id}})
+       .then(response = {
+          message: 'Categoria deletada com sucesso'},
+        res.send(response))
+       .catch(err => res.send(err))
+ }

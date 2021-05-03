@@ -6,4 +6,5 @@ module.exports = function (app) {
     .post(statusController.createOne)
     app.route('/status/:id')
     .get(statusController.listOne)
+    .delete(statusController.deleteOne)
 }

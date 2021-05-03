@@ -26,3 +26,10 @@ exports.createOne = (req, res) => {
         .then(lista => res.send(lista))
         .catch(err => res.send(err))
 }
+exports.deleteOne = (req, res) => {
+    Lista.destroy({where:{id:req.params.id}})
+      .then(response = {
+         message: 'Lista deletada com sucesso'},
+       res.send(response))
+      .catch(err => res.send(err))
+}

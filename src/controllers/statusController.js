@@ -22,3 +22,10 @@ exports.createOne = (req, res) => {
         .then(status => res.send(status))
         .catch(status => res.send(status))
 }
+exports.deleteOne = (req, res) => {
+    Status.destroy({where:{id:req.params.id}})
+       .then(response = {
+          message: 'Status deletado com sucesso'},
+        res.send(response))
+       .catch(err => res.send(err))
+ }

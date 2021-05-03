@@ -27,3 +27,10 @@ exports.createOne = (req, res) => {
         .then(atividade => res.send(atividade))
         .catch(err => res.send(err))
 }
+exports.deleteOne = (req, res) => {
+    Atividade.destroy({where:{id:req.params.id}})
+       .then(response = {
+          message: 'Atividade deletada com sucesso'},
+        res.send(response))
+       .catch(err => res.send(err))
+ }

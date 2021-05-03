@@ -6,4 +6,5 @@ module.exports = function (app) {
     .post(listaController.createOne)
     app.route('/lista/:id')
     .get(listaController.listOne)
+    .delete(listaController.deleteOne)
 }

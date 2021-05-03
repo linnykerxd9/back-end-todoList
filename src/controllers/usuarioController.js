@@ -19,6 +19,8 @@ exports.createOne = (req, res) => {
 
 exports.deleteOne = (req, res) => {
    Usuario.destroy({where:{id:req.params.id}})
-      .then(message => res.send(message="Usuario Apagado com sucesso"))
+      .then(response = {
+         message: 'Usuário deletado com sucesso'},
+       res.send(response))
       .catch(err => res.send(err))
-  }
+}
