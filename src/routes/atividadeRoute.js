@@ -7,5 +7,6 @@ module.exports = function (app) {
 
     app.route('/atividade/:id')
     .get(atividadeController.listOne)
+    .put(atividadeController.updateOne)
     .delete(atividadeController.deleteOne)
 }
